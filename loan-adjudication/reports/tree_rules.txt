@@ -1,0 +1,211 @@
+|--- loan_to_income <= 0.50
+|   |--- current_employment_duration_months <= 5.50
+|   |   |--- current_employment_duration_months <= 0.00
+|   |   |   |--- employment=retired <= 0.50
+|   |   |   |   |--- employment=employed_full_time <= 0.50
+|   |   |   |   |   |--- employment=employed_part_time <= 0.50
+|   |   |   |   |   |   |--- employment=self_employed <= 0.50
+|   |   |   |   |   |   |   |--- class: REJECT
+|   |   |   |   |   |   |--- employment=self_employed >  0.50
+|   |   |   |   |   |   |   |--- debt_to_income_ratio_percent <= 30.85
+|   |   |   |   |   |   |   |   |--- class: REJECT
+|   |   |   |   |   |   |   |--- debt_to_income_ratio_percent >  30.85
+|   |   |   |   |   |   |   |   |--- class: FLAG_REVIEW
+|   |   |   |   |   |--- employment=employed_part_time >  0.50
+|   |   |   |   |   |   |--- age <= 27.50
+|   |   |   |   |   |   |   |--- class: FLAG_REVIEW
+|   |   |   |   |   |   |--- age >  27.50
+|   |   |   |   |   |   |   |--- class: FLAG_REVIEW
+|   |   |   |   |--- employment=employed_full_time >  0.50
+|   |   |   |   |   |--- credit_score <= 634.50
+|   |   |   |   |   |   |--- class: REJECT
+|   |   |   |   |   |--- credit_score >  634.50
+|   |   |   |   |   |   |--- residency=Non_Resident <= 0.50
+|   |   |   |   |   |   |   |--- class: FLAG_REVIEW
+|   |   |   |   |   |   |--- residency=Non_Resident >  0.50
+|   |   |   |   |   |   |   |--- class: REJECT
+|   |   |   |--- employment=retired >  0.50
+|   |   |   |   |--- annual_income_usd <= 29500.00
+|   |   |   |   |   |--- class: REJECT
+|   |   |   |   |--- annual_income_usd >  29500.00
+|   |   |   |   |   |--- credit_score <= 670.00
+|   |   |   |   |   |   |--- credit_score_missing <= 0.50
+|   |   |   |   |   |   |   |--- class: REJECT
+|   |   |   |   |   |   |--- credit_score_missing >  0.50
+|   |   |   |   |   |   |   |--- residency=US_Citizen <= 0.50
+|   |   |   |   |   |   |   |   |--- class: REJECT
+|   |   |   |   |   |   |   |--- residency=US_Citizen >  0.50
+|   |   |   |   |   |   |   |   |--- class: FLAG_REVIEW
+|   |   |   |   |   |--- credit_score >  670.00
+|   |   |   |   |   |   |--- bank_account <= 0.50
+|   |   |   |   |   |   |   |--- bank_account_missing <= 0.50
+|   |   |   |   |   |   |   |   |--- class: REJECT
+|   |   |   |   |   |   |   |--- bank_account_missing >  0.50
+|   |   |   |   |   |   |   |   |--- credit_score <= 733.50
+|   |   |   |   |   |   |   |   |   |--- class: FLAG_REVIEW
+|   |   |   |   |   |   |   |   |--- credit_score >  733.50
+|   |   |   |   |   |   |   |   |   |--- class: FLAG_REVIEW
+|   |   |   |   |   |   |--- bank_account >  0.50
+|   |   |   |   |   |   |   |--- bankruptcy_recent <= 0.50
+|   |   |   |   |   |   |   |   |--- residency_missing <= 0.50
+|   |   |   |   |   |   |   |   |   |--- debt_to_income_ratio_percent <= 38.90
+|   |   |   |   |   |   |   |   |   |   |--- bankruptcy_missing <= 0.50
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 3
+|   |   |   |   |   |   |   |   |   |   |--- bankruptcy_missing >  0.50
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 2
+|   |   |   |   |   |   |   |   |   |--- debt_to_income_ratio_percent >  38.90
+|   |   |   |   |   |   |   |   |   |   |--- class: REJECT
+|   |   |   |   |   |   |   |   |--- residency_missing >  0.50
+|   |   |   |   |   |   |   |   |   |--- age <= 70.00
+|   |   |   |   |   |   |   |   |   |   |--- class: FLAG_REVIEW
+|   |   |   |   |   |   |   |   |   |--- age >  70.00
+|   |   |   |   |   |   |   |   |   |   |--- class: FLAG_REVIEW
+|   |   |   |   |   |   |   |--- bankruptcy_recent >  0.50
+|   |   |   |   |   |   |   |   |--- class: REJECT
+|   |   |--- current_employment_duration_months >  0.00
+|   |   |   |--- bankruptcy_recent <= 0.50
+|   |   |   |   |--- residency=Visa_Holder <= 0.50
+|   |   |   |   |   |--- debt_to_income_ratio_percent <= 39.65
+|   |   |   |   |   |   |--- age <= 19.00
+|   |   |   |   |   |   |   |--- class: REJECT
+|   |   |   |   |   |   |--- age >  19.00
+|   |   |   |   |   |   |   |--- residency=Non_Resident <= 0.50
+|   |   |   |   |   |   |   |   |--- credit_score <= 684.00
+|   |   |   |   |   |   |   |   |   |--- credit_score_missing <= 0.50
+|   |   |   |   |   |   |   |   |   |   |--- debt_to_income_ratio_percent <= 35.20
+|   |   |   |   |   |   |   |   |   |   |   |--- class: REJECT
+|   |   |   |   |   |   |   |   |   |   |--- debt_to_income_ratio_percent >  35.20
+|   |   |   |   |   |   |   |   |   |   |   |--- class: FLAG_REVIEW
+|   |   |   |   |   |   |   |   |   |--- credit_score_missing >  0.50
+|   |   |   |   |   |   |   |   |   |   |--- employment=self_employed <= 0.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: FLAG_REVIEW
+|   |   |   |   |   |   |   |   |   |   |--- employment=self_employed >  0.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: FLAG_REVIEW
+|   |   |   |   |   |   |   |   |--- credit_score >  684.00
+|   |   |   |   |   |   |   |   |   |--- annual_income_usd <= 30000.00
+|   |   |   |   |   |   |   |   |   |   |--- class: REJECT
+|   |   |   |   |   |   |   |   |   |--- annual_income_usd >  30000.00
+|   |   |   |   |   |   |   |   |   |   |--- bank_account <= 0.50
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 2
+|   |   |   |   |   |   |   |   |   |   |--- bank_account >  0.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: FLAG_REVIEW
+|   |   |   |   |   |   |   |--- residency=Non_Resident >  0.50
+|   |   |   |   |   |   |   |   |--- annual_income_usd <= 67750.00
+|   |   |   |   |   |   |   |   |   |--- class: REJECT
+|   |   |   |   |   |   |   |   |--- annual_income_usd >  67750.00
+|   |   |   |   |   |   |   |   |   |--- class: REJECT
+|   |   |   |   |   |--- debt_to_income_ratio_percent >  39.65
+|   |   |   |   |   |   |--- debt_to_income_ratio_percent <= 44.65
+|   |   |   |   |   |   |   |--- class: REJECT
+|   |   |   |   |   |   |--- debt_to_income_ratio_percent >  44.65
+|   |   |   |   |   |   |   |--- class: REJECT
+|   |   |   |   |--- residency=Visa_Holder >  0.50
+|   |   |   |   |   |--- annual_income_usd <= 63250.00
+|   |   |   |   |   |   |--- class: REJECT
+|   |   |   |   |   |--- annual_income_usd >  63250.00
+|   |   |   |   |   |   |--- class: REJECT
+|   |   |   |--- bankruptcy_recent >  0.50
+|   |   |   |   |--- employment=employed_part_time <= 0.50
+|   |   |   |   |   |--- class: REJECT
+|   |   |   |   |--- employment=employed_part_time >  0.50
+|   |   |   |   |   |--- class: REJECT
+|   |--- current_employment_duration_months >  5.50
+|   |   |--- annual_income_usd <= 29999.50
+|   |   |   |--- class: REJECT
+|   |   |--- annual_income_usd >  29999.50
+|   |   |   |--- age <= 17.50
+|   |   |   |   |--- class: REJECT
+|   |   |   |--- age >  17.50
+|   |   |   |   |--- credit_score <= 669.50
+|   |   |   |   |   |--- credit_score <= 259.50
+|   |   |   |   |   |   |--- bank_account <= 0.50
+|   |   |   |   |   |   |   |--- class: REJECT
+|   |   |   |   |   |   |--- bank_account >  0.50
+|   |   |   |   |   |   |   |--- bankruptcy_recent <= 0.50
+|   |   |   |   |   |   |   |   |--- class: FLAG_REVIEW
+|   |   |   |   |   |   |   |--- bankruptcy_recent >  0.50
+|   |   |   |   |   |   |   |   |--- class: REJECT
+|   |   |   |   |   |--- credit_score >  259.50
+|   |   |   |   |   |   |--- class: REJECT
+|   |   |   |   |--- credit_score >  669.50
+|   |   |   |   |   |--- debt_to_income_ratio_percent <= 40.05
+|   |   |   |   |   |   |--- bankruptcy_recent <= 0.50
+|   |   |   |   |   |   |   |--- residency_missing <= 0.50
+|   |   |   |   |   |   |   |   |--- bank_account <= 0.50
+|   |   |   |   |   |   |   |   |   |--- bank_account_missing <= 0.50
+|   |   |   |   |   |   |   |   |   |   |--- class: REJECT
+|   |   |   |   |   |   |   |   |   |--- bank_account_missing >  0.50
+|   |   |   |   |   |   |   |   |   |   |--- residency=US_Citizen <= 0.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: REJECT
+|   |   |   |   |   |   |   |   |   |   |--- residency=US_Citizen >  0.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: FLAG_REVIEW
+|   |   |   |   |   |   |   |   |--- bank_account >  0.50
+|   |   |   |   |   |   |   |   |   |--- bankruptcy_missing <= 0.50
+|   |   |   |   |   |   |   |   |   |   |--- residency=Visa_Holder <= 0.50
+|   |   |   |   |   |   |   |   |   |   |   |--- truncated branch of depth 4
+|   |   |   |   |   |   |   |   |   |   |--- residency=Visa_Holder >  0.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: REJECT
+|   |   |   |   |   |   |   |   |   |--- bankruptcy_missing >  0.50
+|   |   |   |   |   |   |   |   |   |   |--- class: FLAG_REVIEW
+|   |   |   |   |   |   |   |--- residency_missing >  0.50
+|   |   |   |   |   |   |   |   |--- class: FLAG_REVIEW
+|   |   |   |   |   |   |--- bankruptcy_recent >  0.50
+|   |   |   |   |   |   |   |--- class: REJECT
+|   |   |   |   |   |--- debt_to_income_ratio_percent >  40.05
+|   |   |   |   |   |   |--- class: REJECT
+|--- loan_to_income >  0.50
+|   |--- bankruptcy_recent <= 0.50
+|   |   |--- debt_to_income_ratio_percent <= 40.40
+|   |   |   |--- annual_income_usd <= 32500.00
+|   |   |   |   |--- class: REJECT
+|   |   |   |--- annual_income_usd >  32500.00
+|   |   |   |   |--- residency=Non_Resident <= 0.50
+|   |   |   |   |   |--- age <= 19.00
+|   |   |   |   |   |   |--- class: REJECT
+|   |   |   |   |   |--- age >  19.00
+|   |   |   |   |   |   |--- residency=Visa_Holder <= 0.50
+|   |   |   |   |   |   |   |--- bank_account <= 0.50
+|   |   |   |   |   |   |   |   |--- bank_account_missing <= 0.50
+|   |   |   |   |   |   |   |   |   |--- class: REJECT
+|   |   |   |   |   |   |   |   |--- bank_account_missing >  0.50
+|   |   |   |   |   |   |   |   |   |--- residency=Permanent_Resident <= 0.50
+|   |   |   |   |   |   |   |   |   |   |--- class: FLAG_REVIEW
+|   |   |   |   |   |   |   |   |   |--- residency=Permanent_Resident >  0.50
+|   |   |   |   |   |   |   |   |   |   |--- class: FLAG_REVIEW
+|   |   |   |   |   |   |   |--- bank_account >  0.50
+|   |   |   |   |   |   |   |   |--- credit_score <= 667.00
+|   |   |   |   |   |   |   |   |   |--- credit_score <= 270.00
+|   |   |   |   |   |   |   |   |   |   |--- class: FLAG_REVIEW
+|   |   |   |   |   |   |   |   |   |--- credit_score >  270.00
+|   |   |   |   |   |   |   |   |   |   |--- age <= 30.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: REJECT
+|   |   |   |   |   |   |   |   |   |   |--- age >  30.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: REJECT
+|   |   |   |   |   |   |   |   |--- credit_score >  667.00
+|   |   |   |   |   |   |   |   |   |--- employment=student <= 0.50
+|   |   |   |   |   |   |   |   |   |   |--- employment=unemployed <= 0.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: FLAG_REVIEW
+|   |   |   |   |   |   |   |   |   |   |--- employment=unemployed >  0.50
+|   |   |   |   |   |   |   |   |   |   |   |--- class: REJECT
+|   |   |   |   |   |   |   |   |   |--- employment=student >  0.50
+|   |   |   |   |   |   |   |   |   |   |--- class: REJECT
+|   |   |   |   |   |   |--- residency=Visa_Holder >  0.50
+|   |   |   |   |   |   |   |--- debt_to_income_ratio_percent <= 19.80
+|   |   |   |   |   |   |   |   |--- class: REJECT
+|   |   |   |   |   |   |   |--- debt_to_income_ratio_percent >  19.80
+|   |   |   |   |   |   |   |   |--- class: REJECT
+|   |   |   |   |--- residency=Non_Resident >  0.50
+|   |   |   |   |   |--- employment=employed_full_time <= 0.50
+|   |   |   |   |   |   |--- class: REJECT
+|   |   |   |   |   |--- employment=employed_full_time >  0.50
+|   |   |   |   |   |   |--- class: REJECT
+|   |   |--- debt_to_income_ratio_percent >  40.40
+|   |   |   |--- age <= 23.00
+|   |   |   |   |--- class: REJECT
+|   |   |   |--- age >  23.00
+|   |   |   |   |--- class: REJECT
+|   |--- bankruptcy_recent >  0.50
+|   |   |--- annual_income_usd <= 76250.00
+|   |   |   |--- class: REJECT
+|   |   |--- annual_income_usd >  76250.00
+|   |   |   |--- class: REJECT

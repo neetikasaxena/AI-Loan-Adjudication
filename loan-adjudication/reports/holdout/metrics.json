@@ -1,0 +1,252 @@
+{
+  "mode": "RegexExtractor + TemplateExplainer",
+  "n": 10,
+  "decision": {
+    "accuracy": 0.4,
+    "accuracy_95ci": [
+      0.1,
+      0.7
+    ],
+    "macro_f1": 0.3238,
+    "reject_recall": 0.4,
+    "false_approvals": 0,
+    "per_class": {
+      "APPROVE": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 3.0
+      },
+      "FLAG_REVIEW": {
+        "precision": 0.25,
+        "recall": 1.0,
+        "f1-score": 0.4,
+        "support": 2.0
+      },
+      "REJECT": {
+        "precision": 1.0,
+        "recall": 0.4,
+        "f1-score": 0.5714,
+        "support": 5.0
+      }
+    },
+    "confusion_matrix": {
+      "labels": [
+        "APPROVE",
+        "FLAG_REVIEW",
+        "REJECT"
+      ],
+      "matrix": [
+        [
+          0,
+          3,
+          0
+        ],
+        [
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          3,
+          2
+        ]
+      ]
+    }
+  },
+  "rule_set_exact_match": 0.0,
+  "decision_accuracy_by_scenario": {
+    "handwritten": 0.4
+  },
+  "extraction": {
+    "all_fields_exact": 0.0,
+    "per_field_accuracy": {
+      "applicant.age": 0.5,
+      "applicant.credit_score": 0.7,
+      "applicant.annual_income_usd": 0.3,
+      "applicant.debt_to_income_ratio_percent": 0.1,
+      "applicant.employment_status": 0.9,
+      "applicant.current_employment_duration_months": 0.2,
+      "applicant.residency_status": 1.0,
+      "applicant.has_bankruptcy_recent": 0.2,
+      "applicant.has_verifiable_bank_account": 0.6,
+      "loan_application.requested_amount_usd": 0.4
+    },
+    "sources": {
+      "regex": 10
+    }
+  },
+  "explanation": {
+    "sources": {
+      "template": 10
+    },
+    "guardrail_issue_counts": {},
+    "protected_term_leaks_in_final_output": 0,
+    "mean_words": 109.1
+  },
+  "baselines": {
+    "tfidf_lr": {
+      "accuracy": 0.6,
+      "accuracy_95ci": [
+        0.3,
+        0.9
+      ],
+      "macro_f1": 0.4231,
+      "reject_recall": 1.0,
+      "false_approvals": 0,
+      "per_class": {
+        "APPROVE": {
+          "precision": 1.0,
+          "recall": 0.3333,
+          "f1-score": 0.5,
+          "support": 3.0
+        },
+        "FLAG_REVIEW": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 2.0
+        },
+        "REJECT": {
+          "precision": 0.625,
+          "recall": 1.0,
+          "f1-score": 0.7692,
+          "support": 5.0
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "APPROVE",
+          "FLAG_REVIEW",
+          "REJECT"
+        ],
+        "matrix": [
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            0,
+            0,
+            2
+          ],
+          [
+            0,
+            0,
+            5
+          ]
+        ]
+      }
+    },
+    "tfidf_lr_cv": {
+      "accuracy": 0.5,
+      "accuracy_95ci": [
+        0.2,
+        0.8
+      ],
+      "macro_f1": 0.2381,
+      "reject_recall": 1.0,
+      "false_approvals": 0,
+      "per_class": {
+        "APPROVE": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 3.0
+        },
+        "FLAG_REVIEW": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 2.0
+        },
+        "REJECT": {
+          "precision": 0.5556,
+          "recall": 1.0,
+          "f1-score": 0.7143,
+          "support": 5.0
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "APPROVE",
+          "FLAG_REVIEW",
+          "REJECT"
+        ],
+        "matrix": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            0,
+            2
+          ],
+          [
+            0,
+            0,
+            5
+          ]
+        ]
+      }
+    },
+    "tree_structured": {
+      "accuracy": 0.3,
+      "accuracy_95ci": [
+        0.0,
+        0.6
+      ],
+      "macro_f1": 0.1818,
+      "reject_recall": 0.6,
+      "false_approvals": 0,
+      "per_class": {
+        "APPROVE": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 3.0
+        },
+        "FLAG_REVIEW": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 2.0
+        },
+        "REJECT": {
+          "precision": 0.5,
+          "recall": 0.6,
+          "f1-score": 0.5455,
+          "support": 5.0
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "APPROVE",
+          "FLAG_REVIEW",
+          "REJECT"
+        ],
+        "matrix": [
+          [
+            0,
+            2,
+            1
+          ],
+          [
+            0,
+            0,
+            2
+          ],
+          [
+            0,
+            2,
+            3
+          ]
+        ]
+      }
+    }
+  }
+}

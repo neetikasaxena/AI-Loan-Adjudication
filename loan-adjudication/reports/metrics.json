@@ -1,0 +1,348 @@
+{
+  "mode": "RegexExtractor + TemplateExplainer",
+  "n": 400,
+  "decision": {
+    "accuracy": 0.4625,
+    "accuracy_95ci": [
+      0.415,
+      0.51
+    ],
+    "macro_f1": 0.4009,
+    "reject_recall": 0.6467,
+    "false_approvals": 0,
+    "per_class": {
+      "APPROVE": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 156.0
+      },
+      "FLAG_REVIEW": {
+        "precision": 0.2637,
+        "recall": 1.0,
+        "f1-score": 0.4173,
+        "support": 77.0
+      },
+      "REJECT": {
+        "precision": 1.0,
+        "recall": 0.6467,
+        "f1-score": 0.7855,
+        "support": 167.0
+      }
+    },
+    "confusion_matrix": {
+      "labels": [
+        "APPROVE",
+        "FLAG_REVIEW",
+        "REJECT"
+      ],
+      "matrix": [
+        [
+          0,
+          156,
+          0
+        ],
+        [
+          0,
+          77,
+          0
+        ],
+        [
+          0,
+          59,
+          108
+        ]
+      ]
+    }
+  },
+  "rule_set_exact_match": 0.0,
+  "decision_accuracy_by_scenario": {
+    "approve": 0.0,
+    "edge": 0.3571,
+    "reject": 0.7,
+    "reject_and_review": 0.5143,
+    "review": 1.0
+  },
+  "extraction": {
+    "all_fields_exact": 0.0,
+    "per_field_accuracy": {
+      "applicant.age": 1.0,
+      "applicant.credit_score": 1.0,
+      "applicant.annual_income_usd": 0.0,
+      "applicant.debt_to_income_ratio_percent": 0.01,
+      "applicant.employment_status": 0.8275,
+      "applicant.current_employment_duration_months": 0.3425,
+      "applicant.residency_status": 1.0,
+      "applicant.has_bankruptcy_recent": 0.1925,
+      "applicant.has_verifiable_bank_account": 0.925,
+      "loan_application.requested_amount_usd": 0.0
+    },
+    "sources": {
+      "regex": 400
+    }
+  },
+  "explanation": {
+    "sources": {
+      "template": 400
+    },
+    "guardrail_issue_counts": {},
+    "protected_term_leaks_in_final_output": 0,
+    "mean_words": 89.4
+  },
+  "fairness": {
+    "gender": {
+      "groups": {
+        "female": {
+          "n": 220,
+          "truth_approval_rate": 0.4091,
+          "pred_approval_rate": 0.0,
+          "error_rate": 0.5409
+        },
+        "male": {
+          "n": 180,
+          "truth_approval_rate": 0.3667,
+          "pred_approval_rate": 0.0,
+          "error_rate": 0.5333
+        }
+      },
+      "pred_disparate_impact": 1.0,
+      "truth_disparate_impact": 0.8964,
+      "error_rate_gap": 0.0076,
+      "four_fifths_rule_pass": true
+    },
+    "ethnicity": {
+      "groups": {
+        "Asian": {
+          "n": 89,
+          "truth_approval_rate": 0.4494,
+          "pred_approval_rate": 0.0,
+          "error_rate": 0.618
+        },
+        "Black": {
+          "n": 108,
+          "truth_approval_rate": 0.3519,
+          "pred_approval_rate": 0.0,
+          "error_rate": 0.5
+        },
+        "Hispanic": {
+          "n": 97,
+          "truth_approval_rate": 0.3918,
+          "pred_approval_rate": 0.0,
+          "error_rate": 0.4845
+        },
+        "White": {
+          "n": 106,
+          "truth_approval_rate": 0.3774,
+          "pred_approval_rate": 0.0,
+          "error_rate": 0.5566
+        }
+      },
+      "pred_disparate_impact": 1.0,
+      "truth_disparate_impact": 0.783,
+      "error_rate_gap": 0.1335,
+      "four_fifths_rule_pass": true
+    },
+    "region": {
+      "groups": {
+        "Midwest": {
+          "n": 119,
+          "truth_approval_rate": 0.3866,
+          "pred_approval_rate": 0.0,
+          "error_rate": 0.521
+        },
+        "Northeast": {
+          "n": 91,
+          "truth_approval_rate": 0.4505,
+          "pred_approval_rate": 0.0,
+          "error_rate": 0.5604
+        },
+        "South": {
+          "n": 80,
+          "truth_approval_rate": 0.3875,
+          "pred_approval_rate": 0.0,
+          "error_rate": 0.5125
+        },
+        "West": {
+          "n": 110,
+          "truth_approval_rate": 0.3455,
+          "pred_approval_rate": 0.0,
+          "error_rate": 0.5545
+        }
+      },
+      "pred_disparate_impact": 1.0,
+      "truth_disparate_impact": 0.7669,
+      "error_rate_gap": 0.0479,
+      "four_fifths_rule_pass": true
+    }
+  },
+  "counterfactual": {
+    "n": 100,
+    "decision_flip_rate": 0.0,
+    "extraction_change_rate": 0.0,
+    "flips": []
+  },
+  "baselines": {
+    "tfidf_lr": {
+      "accuracy": 0.4825,
+      "accuracy_95ci": [
+        0.43,
+        0.53
+      ],
+      "macro_f1": 0.3678,
+      "reject_recall": 0.9042,
+      "false_approvals": 20,
+      "per_class": {
+        "APPROVE": {
+          "precision": 0.6296,
+          "recall": 0.2179,
+          "f1-score": 0.3238,
+          "support": 156.0
+        },
+        "FLAG_REVIEW": {
+          "precision": 0.5,
+          "recall": 0.1039,
+          "f1-score": 0.172,
+          "support": 77.0
+        },
+        "REJECT": {
+          "precision": 0.4576,
+          "recall": 0.9042,
+          "f1-score": 0.6076,
+          "support": 167.0
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "APPROVE",
+          "FLAG_REVIEW",
+          "REJECT"
+        ],
+        "matrix": [
+          [
+            34,
+            4,
+            118
+          ],
+          [
+            8,
+            8,
+            61
+          ],
+          [
+            12,
+            4,
+            151
+          ]
+        ]
+      }
+    },
+    "tfidf_lr_cv": {
+      "accuracy": 0.45,
+      "accuracy_95ci": [
+        0.4,
+        0.4975
+      ],
+      "macro_f1": 0.3523,
+      "reject_recall": 0.8383,
+      "false_approvals": 30,
+      "per_class": {
+        "APPROVE": {
+          "precision": 0.4915,
+          "recall": 0.1859,
+          "f1-score": 0.2698,
+          "support": 156.0
+        },
+        "FLAG_REVIEW": {
+          "precision": 0.2895,
+          "recall": 0.1429,
+          "f1-score": 0.1913,
+          "support": 77.0
+        },
+        "REJECT": {
+          "precision": 0.462,
+          "recall": 0.8383,
+          "f1-score": 0.5957,
+          "support": 167.0
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "APPROVE",
+          "FLAG_REVIEW",
+          "REJECT"
+        ],
+        "matrix": [
+          [
+            29,
+            19,
+            108
+          ],
+          [
+            11,
+            11,
+            55
+          ],
+          [
+            19,
+            8,
+            140
+          ]
+        ]
+      }
+    },
+    "tree_structured": {
+      "accuracy": 0.3275,
+      "accuracy_95ci": [
+        0.2825,
+        0.3701
+      ],
+      "macro_f1": 0.2714,
+      "reject_recall": 0.4731,
+      "false_approvals": 0,
+      "per_class": {
+        "APPROVE": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 156.0
+        },
+        "FLAG_REVIEW": {
+          "precision": 0.2114,
+          "recall": 0.6753,
+          "f1-score": 0.322,
+          "support": 77.0
+        },
+        "REJECT": {
+          "precision": 0.513,
+          "recall": 0.4731,
+          "f1-score": 0.4922,
+          "support": 167.0
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "APPROVE",
+          "FLAG_REVIEW",
+          "REJECT"
+        ],
+        "matrix": [
+          [
+            0,
+            106,
+            50
+          ],
+          [
+            0,
+            52,
+            25
+          ],
+          [
+            0,
+            88,
+            79
+          ]
+        ]
+      }
+    }
+  }
+}

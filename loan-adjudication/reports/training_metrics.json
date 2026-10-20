@@ -1,0 +1,46 @@
+{
+  "tfidf_lr": {
+    "train_accuracy": 0.9938,
+    "val_accuracy": 0.4825,
+    "val_macro_f1": 0.3678,
+    "val_false_approvals": 20,
+    "train_val_gap": 0.5113
+  },
+  "tfidf_lr_cv": {
+    "train_accuracy": 0.7306,
+    "val_accuracy": 0.45,
+    "val_macro_f1": 0.3523,
+    "val_false_approvals": 30,
+    "train_val_gap": 0.2806,
+    "cv_macro_f1": "0.559 \u00b1 0.029",
+    "best_params": {
+      "C": 3.0,
+      "max_features": 2000,
+      "min_df": 5
+    }
+  },
+  "tree_structured": {
+    "train_accuracy": 1.0,
+    "val_accuracy": 0.3275,
+    "val_macro_f1": 0.2714,
+    "val_false_approvals": 0,
+    "train_val_gap": 0.6725,
+    "cv_macro_f1": "0.970 \u00b1 0.009",
+    "best_params": {
+      "max_depth": null,
+      "min_samples_leaf": 1
+    }
+  },
+  "tree_on_truth": {
+    "train_accuracy": 1.0,
+    "val_accuracy": 0.985,
+    "val_macro_f1": 0.9821,
+    "val_false_approvals": 0,
+    "train_val_gap": 0.015,
+    "cv_macro_f1": "0.977 \u00b1 0.006",
+    "best_params": {
+      "max_depth": null,
+      "min_samples_leaf": 1
+    }
+  }
+}
